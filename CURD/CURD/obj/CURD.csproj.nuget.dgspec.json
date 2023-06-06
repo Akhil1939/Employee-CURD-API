@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Luffy\\Desktop\\Angular with typescript\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj": {}
+    "C:\\Users\\pct78\\Desktop\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Luffy\\Desktop\\Angular with typescript\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj": {
+    "C:\\Users\\pct78\\Desktop\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Luffy\\Desktop\\Angular with typescript\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj",
+        "projectUniqueName": "C:\\Users\\pct78\\Desktop\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj",
         "projectName": "CURD",
-        "projectPath": "C:\\Users\\Luffy\\Desktop\\Angular with typescript\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj",
-        "packagesPath": "C:\\Users\\Luffy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Luffy\\Desktop\\Angular with typescript\\Employee-CURD-API\\CURD\\CURD\\obj\\",
+        "projectPath": "C:\\Users\\pct78\\Desktop\\Employee-CURD-API\\CURD\\CURD\\CURD.csproj",
+        "packagesPath": "C:\\Users\\pct78\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pct78\\Desktop\\Employee-CURD-API\\CURD\\CURD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Luffy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pct78\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,9 +45,33 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.3.0, )"
             }
           },
           "imports": [
@@ -56,8 +80,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -69,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
