@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CURD.Models;
+using CURD.Models.dataModels;
 
 namespace CURD.Controllers
 {
@@ -22,31 +23,49 @@ namespace CURD.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
         {
           if (_context.Employees == null)
           {
               return NotFound();
           }
-            return await _context.Employees.ToListAsync();
+            return await _context.Employees.Select(emp => new EmployeeModel()
+            {
+                EmpId = emp.EmpId,
+                EmpName = emp.EmpName,
+                EmpEmail = emp.EmpEmail,
+                EmpMobile = emp.EmpMobile,
+                EmpSalary = emp.EmpSalary,
+                department = emp.EmpDept.DeptName
+
+            }).ToListAsync();
         }
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        public  ActionResult<Employee> GetEmployee(int id)
         {
           if (_context.Employees == null)
           {
               return NotFound();
           }
-            var employee = await _context.Employees.FindAsync(id);
+            var employee =  _context.Employees.Where(emp=> emp.EmpId == id).AsQueryable();
 
-            if (employee == null)
+            if (!employee.Any())
             {
                 return NotFound();
             }
 
-            return employee;
+            return employee.Select(employee => new Employee()
+            {
+               EmpId= employee.EmpId,
+               EmpName = employee.EmpName,
+               EmpEmail= employee.EmpEmail,
+               EmpMobile= employee.EmpMobile,
+               EmpSalary= employee.EmpSalary,
+               EmpDeptId = employee.EmpDept.DeptId
+
+            }).First();
         }
 
         // PUT: api/Employees/5
