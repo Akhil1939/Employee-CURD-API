@@ -71,14 +71,21 @@ namespace CURD.Controllers
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        public async Task<IActionResult> PutEmployee(int id, UpsertEmployee employee)
         {
             if (id != employee.EmpId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(employee).State = EntityState.Modified;
+            var updateEmployee = new Employee();
+            updateEmployee.EmpId = (int)employee.EmpId;
+            updateEmployee.EmpName = employee.EmpName;
+            updateEmployee.EmpEmail = employee.EmpEmail;
+            updateEmployee.EmpDeptId = employee.EmpDeptId;
+            updateEmployee.EmpMobile = employee.EmpMobile;
+            updateEmployee.EmpSalary = employee.EmpSalary;
+            _context.Entry(updateEmployee).State = EntityState.Modified;
 
             try
             {
@@ -102,13 +109,21 @@ namespace CURD.Controllers
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> PostEmployee(UpsertEmployee employee)
         {
           if (_context.Employees == null)
           {
               return Problem("Entity set 'employeeContext.Employees'  is null.");
           }
-            _context.Employees.Add(employee);
+           var newEmployee = new Employee();
+
+            newEmployee.EmpName = employee.EmpName;
+            newEmployee.EmpEmail = employee.EmpEmail;
+            newEmployee.EmpDeptId= employee.EmpDeptId;
+            newEmployee.EmpMobile = employee.EmpMobile;
+            newEmployee.EmpSalary = employee.EmpSalary;
+
+            _context.Employees.Add(newEmployee);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmployee", new { id = employee.EmpId }, employee);
